@@ -1,20 +1,29 @@
 
 
 
+# packages ----------------------------------------------------------------------
+
 install.packages("ggplot2")
 install.packages("tidyverse")
 install.packages("gganimate")
-library(gganimate)
-library(tidyverse)
-library(ggplot2)
 install.packages("gifski")
-library(gifski)
 install.packages("png")
-library(png)
 
-library(tidyverse)
-my_moving_art <- function(x){
+
+
+# moving art -------------------------------------------------------------------
+
+my_moving_art <- function(x = 42){
+  
+
+  library(gganimate)
+  library(tidyverse)
+  library(ggplot2)
+  library(gifski)
+  library(png)
+  
   set.seed(x)
+  
     df = data.frame(A = sample(1:100, 40),
                        B=sample(1:100, 40),
                        C=sample(1:125, 40), 
@@ -39,10 +48,25 @@ my_moving_art <- function(x){
            shadow_wake(wake_length = 0.5)
        )
 }
-my_moving_art(50)
 
-my_static_art <- function(x){
-  set.seed(x)
+
+my_moving_art()
+
+
+# static art -------------------------------------------------------------------
+  
+  
+my_static_art <- function(x = 42){
+  
+
+  library(gganimate)
+  library(tidyverse)
+  library(ggplot2)
+  library(gifski)
+  library(png)
+ 
+   set.seed(x)
+  
   df = data.frame(A = sample(1:100, 40),
                   B=sample(1:100, 40),
                   C=sample(1:125, 40), 
@@ -65,7 +89,8 @@ my_static_art <- function(x){
            coord_polar()
   )
 }
-     
-my_static_art(50)
+
+
+my_static_art()
 
 
