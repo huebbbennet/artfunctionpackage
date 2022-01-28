@@ -1,0 +1,90 @@
+---
+title: "Untitled"
+author: "Bennet Huebbe"
+date: "28 1 2022"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r,include=FALSE}
+my_static_art <- function(x = 42){
+  
+
+  library(gganimate)
+  library(tidyverse)
+  library(ggplot2)
+  library(gifski)
+  library(png)
+ 
+   set.seed(x)
+  
+  df = data.frame(A = sample(1:100, 40),
+                  B=sample(1:100, 40),
+                  C=sample(1:125, 40), 
+                  D= sample(1:200, 40),
+                  E= sample(1:200, 40), 
+                  G=sample(1:200, 40), 
+                  H=sample(1:200, 40),
+                  I=sample(1:200, 40)) 
+  return(ggplot(df, aes(A)) +
+           geom_point(aes(y = B), color = "black", size = 10, shape = 0) +
+           geom_point(aes(y = C), color = "red", size = 10, shape = 0) +
+           geom_point(aes(y = D), color = "green", size = 10, shape = 0) +
+           geom_point(aes(y = E), color = "blue", size = 10, shape = 0) +
+           geom_point(aes(y = G), color = "purple", size = 10, shape = 0)+
+           geom_point(aes(y = H), color = "orange", size = 10, shape = 0)+
+           theme_void()+
+           labs(y= "", x = "")+
+           scale_x_continuous(breaks = NULL)+
+           scale_y_continuous(breaks = NULL)+
+           coord_polar()
+  )
+}
+(echo = TRUE)
+```
+
+
+```{r}
+library(ggplot2)
+library(gganimate)
+library(gifski)
+library(tidyverse)
+
+```
+
+
+```{r, echo=TRUE}
+my_static_art()
+
+```
+
+```{r}
+my_static_art(32)
+
+```
+
+```{r}
+my_static_art(2)
+
+```
+
+```{r}
+my_static_art(102)
+
+```
+
+
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
